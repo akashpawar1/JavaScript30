@@ -65,7 +65,7 @@
 
     const audio = document.querySelector(`audio[data-key=${e.key.toLowerCase()}]`);
     if(!audio) return; //stop function from in case wrong keypress
-    audio.currentTime = 0;
+    audio.currentTime = 0; //so key will be listened without waiting for sound to end
     audio.play();
   })
 </script>
