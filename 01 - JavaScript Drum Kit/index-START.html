@@ -65,9 +65,20 @@
 
     const audio = document.querySelector(`audio[data-key=${e.key.toLowerCase()}]`);
     const key = document.querySelector(`div[data-key=${e.key.toLowerCase()}]`);
+
     if(!audio) return; //stop function from in case wrong keypress
+
+    key.classList.toggle('playing')
     audio.currentTime = 0; //so key will be listened without waiting for sound to end
     audio.play();
+    key.classList.add('playing')
+
+    function removeTransition(e) {
+      key.classList.remove('playing');
+    }
+
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition)) 
   })
 </script>
 
